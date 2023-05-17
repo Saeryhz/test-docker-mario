@@ -8,13 +8,13 @@
 
 * 1 conteneur `test-docker-mario-mario-server` contenant le serveur Socket.IO dans un environnement Node en écoute du client sur le port 5600
 * 1 conteneur `test-docker-mario-mario-client` contenant le bundle KaboomJS géneré avec webpack
-* 1 conteneur `test-docker-mario-nginx` afin de servir les fichiers statiques de `mario-client` sur le port 80
+* 1 conteneur `test-docker-mario-nginx` afin de servir les fichiers statiques de `mario-client` sur le port 8080
 
 ## Installation
 
 `docker-compose up`
 
-url `127.0.0.1:80`
+url `127.0.0.1:8080`
 
 ## CI/CD
 A chaque push / pr sur main, les images Docker sont build et envoyées sur [Docker Hub](https://hub.docker.com/r/williamiia/).

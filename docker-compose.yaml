@@ -24,7 +24,7 @@ services:
     networks:
       - mario-network
     ports:
-      - 80:80
+      - 8080:80
     volumes:
       - mario-client-app:/usr/share/nginx/html
     depends_on:
