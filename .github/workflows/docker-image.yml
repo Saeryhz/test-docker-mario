@@ -1,0 +1,32 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Build and push mario-client image
+      uses: docker/build-push-action@v2
+      with:
+        context: ./mario-client
+        file: ./mario-client/Dockerfile
+        push: true
+        tags: williamiia/test-docker-mario-client:latest
+
+    - name: Build and push mario-server image
+      uses: docker/build-push-action@v2
+      with:
+        context: ./mario-server
+        file: ./mario-server/Dockerfile
+        push: true
+        tags: williamiia/test-docker-mario-server:latest
