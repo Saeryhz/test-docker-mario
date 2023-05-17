@@ -17,5 +17,5 @@
 url `127.0.0.1:80`
 
 ## CI/CD
-A chaque push / pr sur main, les images Docker sont build et envoyées sur Docker Hub.
+A chaque push / pr sur main, les images Docker sont build et envoyées sur [Docker Hub](https://hub.docker.com/r/williamiia/).
 
