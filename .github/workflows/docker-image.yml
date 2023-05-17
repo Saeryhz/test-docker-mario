@@ -10,10 +10,15 @@ jobs:
   build-and-push:
     runs-on: ubuntu-latest
     env:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      DOCKER_ACCESS_TOKEN: ${{ secrets.DOCKER_ACCESS_TOKEN }}
     steps:
     - uses: actions/checkout@v3
+
+    - name: Log in to Docker Hub
+      uses: docker/login-action@v1
+      with:
+        username: williamiia
+        password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
 
     - name: Build and push mario-client image
       uses: docker/build-push-action@v2
@@ -21,7 +26,7 @@ jobs:
         context: ./mario-client
         file: ./mario-client/Dockerfile
         push: true
-        tags: williamiia/test-docker-mario-client:latest
+        tags: williamiia/mario-client:latest
 
     - name: Build and push mario-server image
       uses: docker/build-push-action@v2
@@ -29,4 +34,4 @@ jobs:
         context: ./mario-server
         file: ./mario-server/Dockerfile
         push: true
-        tags: williamiia/test-docker-mario-server:latest
+        tags: williamiia/mario-server:latest
